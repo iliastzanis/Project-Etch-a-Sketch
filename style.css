@@ -24,7 +24,7 @@ button {
     flex-wrap: wrap;
     width: 600px;
     height: 600px;
-
+   
 }
 
 .grid-item {
@@ -35,7 +35,3 @@ button {
     border: 1px solid #ccc;
 }
 
-.grid-item:hover {
-    background-color: black;
-
-}

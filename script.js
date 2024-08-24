@@ -28,19 +28,44 @@ submitBtn.addEventListener('click', function () {
     }
 });
 
+
+
 //function that makes the grid and calculates it to fit on a 400x400 container
 function makeGrid(gridSize) {
     const gridItemSize = 600 / gridSize;
     for (let i = 0; i < gridSize * gridSize; i++) {
 
         const gridItem = document.createElement("div");
+
         gridItem.classList.add("grid-item");
         gridItem.style.width = `${gridItemSize}px`;
         gridItem.style.height = `${gridItemSize}px`;
         container.appendChild(gridItem);
 
+        let interactions = 0; // Initialize the interaction counter
+        let initialColor = null; // Variable to store the initial color
+
+        gridItem.addEventListener('mouseover', () => {
+            if (interactions === 0) {
+                // Generate a random color on the first interaction
+                initialColor = getRandomRGB();
+                gridItem.style.backgroundColor = initialColor; // Set initial color with full opacity
+            }
+
+            interactions++; // Increment interaction count
+        });
+
+
     }
 }
+// Function to generate a random RGB color
+function getRandomRGB() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r},${g},${b})`;
+}
+
 
 //initial call of function with gridsize 16x16
 makeGrid(gridSize);
